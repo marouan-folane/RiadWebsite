@@ -12,6 +12,8 @@ import Profile from './Profile';
 import RoomDetail from './RoomDetail';
 import Payment from './Payment';
 import Dining from './Dining';
+import Activities from './Activities';
+
 
 
 function App() {
@@ -50,6 +52,7 @@ function App() {
                         <Link to="/rooms" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Rooms & Suites</Link>
                         <Link to="/reservation" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Reservation</Link>
                         <Link to="/dining" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Dining</Link>
+                        <Link to="/activities" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Activities</Link>
                         <Link to="/contact" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Contact</Link>
                         <Link to="/about" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>About</Link>
                        
@@ -90,9 +93,10 @@ function App() {
                                         <Link to="/" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Home</Link>
                                         <Link to="/rooms" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Rooms & Suites</Link>
                                         <Link to="/reservation" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Reservation</Link>
+                                        <Link to="/dining" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Dining</Link>
+                                        <Link to="/activities" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Activities</Link>
                                         <Link to="/contact" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Contact</Link>
                                         <Link to="/about" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>About</Link>
-                                        <Link to="/dining" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Dining</Link>
                                         <Link to="/profile" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Profile</Link>
                                     </div>
                                 </div>
@@ -107,12 +111,13 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/rooms" element={<Rooms />} />
                     <Route path="/reservation" element={<Reservation />} />
+                    <Route path="/dining" element={<Dining />} />
+                    <Route path="/activities" element={<Activities />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/room/:id" element={<RoomDetail />} />
                     <Route path="/payment" element={<Payment />} />
-                    <Route path="/dining" element={<Dining />} />
                 </Routes>
             </main>
         </div>

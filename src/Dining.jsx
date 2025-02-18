@@ -1,7 +1,12 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { FaUtensils, FaWineGlass, FaCoffee } from 'react-icons/fa';
+import LoadingAnimation from './LoadingAnimation';
 
 function Dining() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
     const menuItems = [
         {
             title: "Traditional Moroccan Cuisine",
@@ -23,47 +28,67 @@ function Dining() {
         }
     ];
 
-    return (
-        <motion.section 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="container mx-auto p-8"
-        >
-            <motion.h2 
-                initial={{ y: -20 }}
-                animate={{ y: 0 }}
-                className="text-4xl font-bold mb-8 text-center"
-            >
-                Dining Experience
-            </motion.h2>
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+    }, []);
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {menuItems.map((item, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.2 }}
-                        className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+    useEffect(() => {
+        if (!isLoading) {
+            setTimeout(() => {
+                setIsOpen(true);
+            }, 1000);
+        }
+    }, [isLoading]);
+
+    return (
+        <AnimatePresence>
+            {isLoading ? (
+                <LoadingAnimation word="Dining..." />
+            ) : (
+                <motion.section 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="container mx-auto p-8"
+                >
+                    <motion.h2 
+                        initial={{ y: -20 }}
+                        animate={{ y: 0 }}
+                        className="text-4xl font-bold mb-8 text-center"
                     >
-                        <div className="relative h-64">
-                            <img 
-                                src={item.image} 
-                                alt={item.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="p-6">
-                            <div className="flex items-center mb-4">
-                                {item.icon}
-                                <h3 className="text-xl font-semibold ml-3">{item.title}</h3>
-                            </div>
-                            <p className="text-gray-600">{item.description}</p>
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-        </motion.section>
+                        Dining Experience
+                    </motion.h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {menuItems.map((item, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.2 }}
+                                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                            >
+                                <div className="relative h-64">
+                                    <img 
+                                        src={item.image} 
+                                        alt={item.title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="p-6">
+                                    <div className="flex items-center mb-4">
+                                        {item.icon}
+                                        <h3 className="text-xl font-semibold ml-3">{item.title}</h3>
+                                    </div>
+                                    <p className="text-gray-600">{item.description}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.section>
+            )}
+        </AnimatePresence>
     );
 }
 
