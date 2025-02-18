@@ -1,6 +1,8 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { useState,useNavigate } from 'react';
+import { useState, } from 'react';
 import { FaUser, FaBars, FaTimes } from 'react-icons/fa';
+
+
 import Home from './Home';
 import Rooms from './Rooms';
 import Reservation from './Reservation';

@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import back from './back.jpeg';
 
 function Home() {
     return (
@@ -9,16 +8,14 @@ function Home() {
             <div 
                 className="absolute inset-0"
                 style={{
-                    backgroundImage: `url(${back})`,
-                    overlay:'rgba(0, 0, 0, 0.8)',
-
+                    backgroundImage: "url('https://images.unsplash.com/photo-1578944032637-f09897c5233d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNjUyOXwwfDF8c2VhcmNofDF8fHJpYWQlMjBtYXJyYWtlY2h8ZW58MHx8fHwxNjg1NzA1NTMyfDA&ixlib=rb-4.0.3&q=80&w=2560')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                     minHeight: '100vh'
                 }}
             >
-                {/* Removed the gray overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-50"></div>
             </div>
 
             {/* Content */}
