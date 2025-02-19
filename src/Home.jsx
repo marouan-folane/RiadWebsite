@@ -64,14 +64,7 @@ function Home() {
                 </motion.div>
             </motion.div>
 
-            {/* Scroll Indicator */}
-            <motion.div 
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-                <span className="text-white text-4xl">↓</span>
-            </motion.div>
+            
         </div>
     );
 }
