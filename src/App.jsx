@@ -22,26 +22,12 @@ function App() {
     const location = useLocation();
    
     const isHomePage = location.pathname === '/';
-    const[theme,setTheme] = useState('light');
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
-    const handleLogout = () => {
-        // Handle logout logic here
-        navigate('/'); // Redirect to home after logout
-    };
+ 
   
   
     return (
         <div className="min-h-screen">
-            <style>
-                {`
-                    body {
-                        background-color: ${theme === 'light' ? 'white' : 'black'};
-                        color: ${theme === 'light' ? 'black' : 'white'};
-                    }
-                `}
-            </style>
+           
             <header className={`fixed w-full z-50 transition-all duration-300 ${
                 isHomePage ? 'bg-transparent' : 'bg-white shadow-md'
             }`}>
@@ -69,7 +55,6 @@ function App() {
                                 {isProfileMenuOpen && (
                                     <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 z-50">
                                         <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</Link>
-                                        <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={handleLogout}>Logout</button>
                                     </div>
                                 )}
                             </div>

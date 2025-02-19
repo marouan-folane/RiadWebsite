@@ -48,14 +48,14 @@ function Activities() {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 2000);
+        }, 1000);
     }, []);
 
     useEffect(() => {
         if (!isLoading) {
             setTimeout(() => {
                 setIsOpen(true);
-            }, 1000);
+                }, 700);
         }
     }, [isLoading]);
 

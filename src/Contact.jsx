@@ -1,31 +1,19 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaInstagram, FaFacebook } from 'react-icons/fa';
-import LoadingAnimation from './LoadingAnimation';
+
 
 function Contact() {
     const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-    }, []);
+  
 
-    useEffect(() => {
-        if (!isLoading) {
-            setTimeout(() => {
-                setIsOpen(true);
-            }, 1000);
-        }
-    }, [isLoading]);
+  
 
     return (
         <AnimatePresence>
-            {isLoading ? (
-                <LoadingAnimation word="Contact..." />
-            ) : (
+            
                 <motion.section 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
