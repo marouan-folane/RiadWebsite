@@ -1,7 +1,6 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { useState, } from 'react';
+import { useState } from 'react';
 import { FaUser, FaBars, FaTimes } from 'react-icons/fa';
-
 
 import Home from './Home';
 import Rooms from './Rooms';
@@ -14,37 +13,28 @@ import Payment from './Payment';
 import Dining from './Dining';
 import Activities from './Activities';
 
-
-
 function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
     const location = useLocation();
-   
     const isHomePage = location.pathname === '/';
- 
-  
-  
+
     return (
         <div className="min-h-screen">
-           
-            <header className={`fixed w-full z-50 transition-all duration-300 ${
-                isHomePage ? 'bg-transparent' : 'bg-white shadow-md'
-            }`}>
-                <nav className="container mx-auto px-4 py-4">
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex justify-center items-center space-x-8">
-                        <Link to="/" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Home</Link>
-                        <Link to="/rooms" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Rooms & Suites</Link>
-                        <Link to="/reservation" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Reservation</Link>
-                        <Link to="/dining" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Dining</Link>
-                        <Link to="/activities" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Activities</Link>
-                        <Link to="/contact" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>Contact</Link>
-                        <Link to="/about" className={`nav-link ${isHomePage ? 'text-white' : 'text-gray-800'}`}>About</Link>
-                       
+            {!isHomePage && (
+                <header className="fixed w-full z-50 bg-white shadow-md">
+                    <nav className="container mx-auto px-4 py-4">
+                        {/* Desktop Navigation */}
+                        <div className="hidden md:flex justify-center items-center space-x-8">
+                            <Link to="/" className="nav-link text-gray-800">Home</Link>
+                            <Link to="/rooms" className="nav-link text-gray-800">Rooms & Suites</Link>
+                            <Link to="/reservation" className="nav-link text-gray-800">Reservation</Link>
+                            <Link to="/dining" className="nav-link text-gray-800">Dining</Link>
+                            <Link to="/activities" className="nav-link text-gray-800">Activities</Link>
+                            <Link to="/contact" className="nav-link text-gray-800">Contact</Link>
+                            <Link to="/about" className="nav-link text-gray-800">About</Link>
 
-                        {/* Profile Icon - Not shown on home page */}
-                        {!isHomePage && (
+                            {/* Profile Icon */}
                             <div className="relative">
                                 <button 
                                     onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
@@ -58,38 +48,38 @@ function App() {
                                     </div>
                                 )}
                             </div>
-                        )}
-                    </div>
+                        </div>
 
-                    {/* Mobile Navigation */}
-                    <div className="md:hidden">
-                        <button 
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className={`absolute right-4 top-4 z-50 ${isHomePage ? 'text-white' : 'text-gray-800'}`}
-                        >
-                            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-                        </button>
+                        {/* Mobile Navigation */}
+                        <div className="md:hidden">
+                            <button 
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className="absolute right-4 top-4 z-50 text-gray-800"
+                            >
+                                {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                            </button>
 
-                        {/* Mobile Menu */}
-                        {isMenuOpen && (
-                            <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
-                                <div className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg p-4">
-                                    <div className="flex flex-col space-y-4 mt-12">
-                                        <Link to="/" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Home</Link>
-                                        <Link to="/rooms" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Rooms & Suites</Link>
-                                        <Link to="/reservation" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Reservation</Link>
-                                        <Link to="/dining" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Dining</Link>
-                                        <Link to="/activities" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Activities</Link>
-                                        <Link to="/contact" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-                                        <Link to="/about" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>About</Link>
-                                        <Link to="/profile" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Profile</Link>
+                            {/* Mobile Menu */}
+                            {isMenuOpen && (
+                                <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
+                                    <div className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg p-4">
+                                        <div className="flex flex-col space-y-4 mt-12">
+                                            <Link to="/" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Home</Link>
+                                            <Link to="/rooms" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Rooms & Suites</Link>
+                                            <Link to="/reservation" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Reservation</Link>
+                                            <Link to="/dining" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Dining</Link>
+                                            <Link to="/activities" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Activities</Link>
+                                            <Link to="/contact" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+                                            <Link to="/about" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>About</Link>
+                                            <Link to="/profile" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Profile</Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )}
-                    </div>
-                </nav>
-            </header>
+                            )}
+                        </div>
+                    </nav>
+                </header>
+            )}
 
             <main className={`${!isHomePage && 'pt-24'}`}>
                 <Routes>

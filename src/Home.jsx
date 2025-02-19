@@ -63,8 +63,6 @@ function Home() {
                     </Link>
                 </motion.div>
             </motion.div>
-
-            
         </div>
     );
 }
